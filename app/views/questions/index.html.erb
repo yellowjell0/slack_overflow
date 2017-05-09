@@ -1,0 +1,37 @@
+<h1>Join Us!</h1>
+<p>
+  We're getting Bigger, and Bigger, just like grandma
+</p>
+<div class="container">
+  <div class="col-sm-10 col-sm-offset-1 col-xs-12 blog-content">
+  <center><%= link_to 'Ask Your Own Question', new_question_path %>
+    <% @questions.each do |question| %></center>
+    <div class="question_votes">
+      <ul>
+        <li>
+          <input class="question_upvote" type="image" src="/assets/up.png">
+        </li>
+        <li class="votes_count" ><%= question.votes.count %></li>
+        <li>
+          <input class="question_downvote" type="image" src="/assets/down.png">
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12">
+      <div class="text-center">
+        <h2><%= link_to question.title, question_path(question) %></h2>
+        <h6><%= question.created_at.strftime('%b %d, %Y') %></h6>
+      </div>
+
+      <div style="text-align: center;">
+        <%= raw(question.body).truncate(358) %>
+      </div>
+
+      <div class="text-center">
+        <%= link_to "READ MORE", question_path(question) %>
+      </div>
+      <br>
+    </div>
+    <% end %>
+  </div>
+</div>
