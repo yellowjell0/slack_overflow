@@ -1,0 +1,36 @@
+<div class="col-sm-11 col-xs-12 blog-content">
+
+ <div class="question_votes">
+      <ul>
+        <li>
+          <input class="question_upvote" type="image" src="/assets/up.png">
+        </li>
+        <li class="votes_count" ><%= @question.votes.count %></li>
+        <li>
+          <input class="question_downvote" type="image" src="/assets/down.png">
+        </li>
+      </ul>
+    </div>
+<nav>
+<%= link_to 'Back',   questions_path %>
+<%= link_to 'Edit', edit_question_path(@question) %>
+<%= link_to 'Delete', question_path(@question),
+                      method: :delete,
+                      data: { confirm: 'Are You Sure?' } %>
+  </nav>
+  <h2 class="text-center"><%= @question.title %></h2>
+  <h5 class="text-center"><%= @question.created_at.strftime('%b %d, %Y') %></h5>
+  <div style="text-align: center;"><h3><%= raw @question.body %></h3></div><hr>
+  <div class="question_answers" style="text-align: center;">
+    <% @question.answers.each do |answer| %>
+      <span class="answer"><h4><%= answer.body %></h4></span>
+      <span class="answer_user_name"><%= link_to answer.user.user_name, users_path(answer.user) %></span><hr>
+      <div class="answer_comments">
+        <% answer.comments.each do |comment| %>
+           <span class="comment"><%= comment.body %></span><br>
+      <span class="comment_user_name"><%= link_to comment.user.user_name, users_path(answer.user) %></span><hr>
+      <% end %>
+      <% end %>
+      </div>
+  </div>
+</div>

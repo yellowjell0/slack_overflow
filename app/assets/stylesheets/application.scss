@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.question_upvote {
+  width: 15px;
+  height: 15px;
+}
+
+.question_downvote {
+  width: 15px;
+  height: 15px;
+}
+
+.answer_upvote {
+  width: 15px;
+  height: 15px;
+}
+
+.answer_downvote {
+  width: 15px;
+  height: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
